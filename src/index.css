@@ -46,6 +46,13 @@ All colors MUST be HSL.
     --glow-shadow: 0 0 40px hsl(0 0% 100% / 0.1);
     --transition-smooth: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
     --transition-spring: all 0.6s cubic-bezier(0.34, 1.56, 0.64, 1);
+
+    /* Orange-Red Gradient Accents */
+    --gradient-orange: linear-gradient(135deg, hsl(14 91% 54%) 0%, hsl(0 84% 60%) 100%);
+    --gradient-orange-soft: linear-gradient(135deg, hsl(14 91% 54% / 0.1) 0%, hsl(0 84% 60% / 0.1) 100%);
+    --orange-primary: 14 91% 54%;
+    --red-primary: 0 84% 60%;
+    
     
     --radius: 0.75rem;
 
@@ -65,7 +72,9 @@ All colors MUST be HSL.
 
     --sidebar-ring: 217.2 91.2% 59.8%;
   }
-
+html {
+  scroll-behavior: smooth;
+}
   .dark {
     /* Dark Mode - Inverted Black & White */
     --background: 0 0% 5%;
@@ -170,5 +179,45 @@ All colors MUST be HSL.
   /* Counter Animation */
   .counter {
     @apply text-4xl font-bold text-primary;
+  }
+  
+  /* Service Card Animations */
+  .service-card-left {
+    @apply opacity-0 -translate-x-full transition-all duration-1000 ease-out;
+  }
+  
+  .service-card-right {
+    @apply opacity-0 translate-x-full transition-all duration-1000 ease-out;
+  }
+  
+  .service-card-left.animate {
+    @apply opacity-100 translate-x-0;
+  }
+  
+  .service-card-right.animate {
+    @apply opacity-100 translate-x-0;
+  }
+  
+  /* Gradient Border Hover */
+  .gradient-border {
+    @apply relative bg-card rounded-2xl p-8 transition-all duration-300;
+  }
+  
+  .gradient-border::before {
+    content: '';
+    position: absolute;
+    top: -2px;
+    left: -2px;
+    right: -2px;
+    bottom: -2px;
+    background: var(--gradient-orange);
+    border-radius: inherit;
+    z-index: -1;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+  }
+  
+  .gradient-border:hover::before {
+    opacity: 1;
   }
 }

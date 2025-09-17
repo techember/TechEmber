@@ -1,161 +1,193 @@
-import { motion } from 'framer-motion';
-import { useInView } from 'react-intersection-observer';
-import { Code, Smartphone, TrendingUp, Share2, Video } from 'lucide-react';
+import React, { useState, useEffect, useRef } from 'react';
+import { Code, Smartphone, TrendingUp, Share2, Video, WandSparkles, ChevronLeft, ChevronRight } from 'lucide-react';
 
 const ServicesSection = () => {
-  const [ref, inView] = useInView({
-    threshold: 0.1,
-    triggerOnce: true,
-  });
+  const [currentIndex, setCurrentIndex] = useState(0);
+  const [isHovering, setIsHovering] = useState(false);
+  const [hoveredCard, setHoveredCard] = useState(null);
+  const carouselRef = useRef(null);
 
   const services = [
     {
       icon: Code,
       title: 'Website Development',
       description: 'Custom websites built with modern technologies for optimal performance and user experience.',
-      features: ['Responsive Design', 'SEO Optimized', 'Fast Loading', 'Secure'],
     },
     {
       icon: Smartphone,
       title: 'App Development',
       description: 'Native and cross-platform mobile applications that engage users and drive business growth.',
-      features: ['iOS & Android', 'React Native', 'UI/UX Design', 'App Store Ready'],
     },
     {
       icon: TrendingUp,
       title: 'Digital Marketing',
       description: 'Comprehensive digital marketing strategies to boost your online presence and conversions.',
-      features: ['SEO/SEM', 'Content Marketing', 'Email Campaigns', 'Analytics'],
     },
     {
       icon: Share2,
       title: 'Social Media Marketing',
-      description: 'Engaging social media campaigns that build brand awareness and community engagement.',
-      features: ['Content Creation', 'Community Management', 'Paid Advertising', 'Influencer Outreach'],
+      description: 'Engaging social campaigns that boost brand and community.',
     },
     {
       icon: Video,
       title: 'Video Editing',
       description: 'Professional video editing services for marketing, educational, and entertainment content.',
-      features: ['Motion Graphics', 'Color Grading', 'Sound Design', 'Multi-format Export'],
+    },
+    {
+      icon: WandSparkles,
+      title: 'Graphic Designing',
+      description: 'Creative graphic design solutions to elevate your brand identity and captivate your audience.',
     },
   ];
 
-  const containerVariants = {
-    hidden: { opacity: 0 },
-    visible: {
-      opacity: 1,
-      transition: {
-        staggerChildren: 0.2,
-      },
-    },
+  // Auto-scroll functionality
+  useEffect(() => {
+    if (!isHovering) {
+      const interval = setInterval(() => {
+        setCurrentIndex((prev) => (prev + 1) % services.length);
+      }, 3000);
+      return () => clearInterval(interval);
+    }
+  }, [isHovering, services.length]);
+
+  const nextSlide = () => {
+    setCurrentIndex((prev) => (prev + 1) % services.length);
   };
 
-  const itemVariants = {
-    hidden: { opacity: 0, y: 30 },
-    visible: {
-      opacity: 1,
-      y: 0,
-      transition: {
-        duration: 0.6,
-        ease: 'easeOut',
-      },
-    },
+  const prevSlide = () => {
+    setCurrentIndex((prev) => (prev - 1 + services.length) % services.length);
+  };
+
+  const getVisibleCards = () => {
+    const visibleCards = [];
+    for (let i = 0; i < 3; i++) {
+      const index = (currentIndex + i) % services.length;
+      visibleCards.push({ ...services[index], originalIndex: index });
+    }
+    return visibleCards;
   };
 
   return (
-    <section className="py-20 bg-muted/20">
+    <section className="py-20 bg-white relative overflow-hidden">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <motion.div
-          ref={ref}
-          initial={{ opacity: 0, y: 30 }}
-          animate={inView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.6 }}
-          className="text-center mb-16"
-        >
-          <h2 className="text-4xl md:text-5xl font-bold text-foreground mb-4">
-            Our <span className="text-primary">Services</span>
+        {/* Section Header */}
+        <div className="text-center mb-16">
+          <h2 className="text-4xl md:text-5xl font-bold text-black mb-4">
+            Our <span className="text-gray-700">Services</span>
           </h2>
-          <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
+          <p className="text-xl text-gray-600 max-w-3xl mx-auto">
             Comprehensive technology solutions tailored to meet your business needs and drive growth
           </p>
-        </motion.div>
+        </div>
 
-        <motion.div
-          variants={containerVariants}
-          initial="hidden"
-          animate={inView ? "visible" : "hidden"}
-          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"
+        {/* Carousel Container */}
+        <div 
+          className="relative"
+          onMouseEnter={() => setIsHovering(true)}
+          onMouseLeave={() => setIsHovering(false)}
         >
-          {services.map((service, index) => {
-            const Icon = service.icon;
-            return (
-              <motion.div
-                key={index}
-                variants={itemVariants}
-                className="group"
-              >
-                <div className="bg-card border border-border rounded-2xl p-8 h-full card-hover relative overflow-hidden">
-                  {/* Background Pattern */}
-                  <div className="absolute top-0 right-0 w-32 h-32 opacity-5">
-                    <div className="w-full h-full" style={{
-                      backgroundImage: `radial-gradient(circle at 2px 2px, hsl(var(--primary)) 1px, transparent 0)`,
-                      backgroundSize: '20px 20px'
-                    }} />
-                  </div>
+          {/* Navigation Arrows - Only visible on hover */}
+          <div className={`absolute left-0 top-1/2 -translate-y-1/2 z-20 transition-all duration-300 ${isHovering ? 'opacity-100 translate-x-0' : 'opacity-0 -translate-x-4'}`}>
+            <button
+              onClick={prevSlide}
+              className="bg-black/80 hover:bg-black text-white p-3 rounded-full shadow-lg backdrop-blur-sm transition-all duration-300 hover:scale-110"
+            >
+              <ChevronLeft className="w-6 h-6" />
+            </button>
+          </div>
 
-                  <div className="relative z-10">
-                    <motion.div
-                      initial={{ scale: 0, rotate: -45 }}
-                      animate={inView ? { scale: 1, rotate: 0 } : {}}
-                      transition={{ 
-                        delay: index * 0.1 + 0.3, 
-                        type: 'spring', 
-                        stiffness: 200,
-                        damping: 15 
-                      }}
-                      className="w-16 h-16 mb-6 bg-primary rounded-2xl flex items-center justify-center group-hover:scale-110 group-hover:rotate-3 transition-all duration-300"
-                    >
-                      <Icon className="w-8 h-8 text-primary-foreground" />
-                    </motion.div>
+          <div className={`absolute right-0 top-1/2 -translate-y-1/2 z-20 transition-all duration-300 ${isHovering ? 'opacity-100 translate-x-0' : 'opacity-0 translate-x-4'}`}>
+            <button
+              onClick={nextSlide}
+              className="bg-black/80 hover:bg-black text-white p-3 rounded-full shadow-lg backdrop-blur-sm transition-all duration-300 hover:scale-110"
+            >
+              <ChevronRight className="w-6 h-6" />
+            </button>
+          </div>
 
-                    <h3 className="text-2xl font-bold text-card-foreground mb-4 group-hover:text-primary transition-colors duration-300">
-                      {service.title}
-                    </h3>
+          {/* Cards Container */}
+          <div className="flex justify-center gap-6 px-16">
+            {getVisibleCards().map((service, index) => {
+              const Icon = service.icon;
+              const isHovered = hoveredCard === service.originalIndex;
+              
+              return (
+                <div
+                  key={`${service.originalIndex}-${currentIndex}`}
+                  className={`w-80 transition-all duration-500 ${index === 1 ? 'scale-105 z-10' : 'scale-95 opacity-80'}`}
+                  onMouseEnter={() => setHoveredCard(service.originalIndex)}
+                  onMouseLeave={() => setHoveredCard(null)}
+                >
+                  {/* Card */}
+                  <div className="relative bg-black rounded-2xl p-4 h-[300px] overflow-hidden group">
+                    {/* Animated Border Gradient */}
+                    <div className={`absolute inset-0 rounded-2xl transition-all duration-300 ${isHovered ? 'opacity-100' : 'opacity-0'}`}>
+                      <div className="absolute inset-0 rounded-2xl bg-gradient-to-r from-orange-500 via-red-500 to-orange-500 bg-[length:200%_200%] animate-gradient-x p-0.5">
+                        <div className="w-full h-full bg-black rounded-2xl"></div>
+                      </div>
+                    </div>
 
-                    <p className="text-muted-foreground mb-6 leading-relaxed">
-                      {service.description}
-                    </p>
+                    {/* Card Content */}
+                    <div className="relative bg-black rounded-2xl p-3 h-[300px] overflow-hidden group">
+                      {/* Icon */}
+                      <div className={`w-14 h-14 mb-4 bg-white rounded-2xl flex items-center justify-center transition-all duration-300 ${isHovered ? 'scale-110 rotate-3' : ''}`}>
+                        <Icon className="w-8 h-8 text-black" />
+                      </div>
 
-                    <ul className="space-y-2">
-                      {service.features.map((feature, featureIndex) => (
-                        <motion.li
-                          key={featureIndex}
-                          initial={{ opacity: 0, x: -20 }}
-                          animate={inView ? { opacity: 1, x: 0 } : {}}
-                          transition={{ delay: index * 0.1 + featureIndex * 0.1 + 0.5 }}
-                          className="flex items-center text-sm text-muted-foreground"
-                        >
-                          <div className="w-2 h-2 bg-primary rounded-full mr-3 group-hover:scale-125 transition-transform duration-300" />
-                          {feature}
-                        </motion.li>
-                      ))}
-                    </ul>
+                      {/* Title */}
+                      <h3 className={`text-2xl font-bold mb-4 transition-colors duration-300 ${isHovered ? 'text-orange-400' : 'text-white'}`}>
+                        {service.title}
+                      </h3>
 
-                    <motion.button
-                      whileHover={{ scale: 1.05 }}
-                      whileTap={{ scale: 0.95 }}
-                      className="mt-6 w-full py-3 px-6 border border-primary text-primary rounded-lg font-medium hover:bg-primary hover:text-primary-foreground transition-all duration-300"
-                    >
-                      Learn More
-                    </motion.button>
+                      {/* Description */}
+                      <p className="text-gray-300 mb-6 leading-relaxed flex-1">
+                        {service.description}
+                      </p>
+                    </div>
+
+                    {/* Learn More Button - Partially inside/outside card */}
+                    <div className="absolute bottom-4 left-8 right-8">
+                      <button className={`w-full py-3 px-3 bg-white text-black rounded-lg font-semibold transition-all duration-300 shadow-lg hover:shadow-xl transform ${isHovered ? 'translate-y-0 bg-gradient-to-r from-orange-500 to-red-500 text-white' : 'translate-y-0'}`}>
+                        Learn More
+                      </button>
+                    </div>
                   </div>
                 </div>
-              </motion.div>
-            );
-          })}
-        </motion.div>
+              );
+            })}
+          </div>
+
+          {/* Dots Indicator */}
+          <div className="flex justify-center mt-12 space-x-2">
+            {services.map((_, index) => (
+              <button
+                key={index}
+                onClick={() => setCurrentIndex(index)}
+                className={`w-3 h-3 rounded-full transition-all duration-300 ${
+                  index === currentIndex 
+                    ? 'bg-black scale-125' 
+                    : 'bg-gray-300 hover:bg-gray-500'
+                }`}
+              />
+            ))}
+          </div>
+        </div>
       </div>
+
+      {/* Custom CSS for gradient animation
+      <style jsx>{`
+        @keyframes gradient-x {
+          0%, 100% {
+            background-position: 0% 50%;
+          }
+          50% {
+            background-position: 100% 50%;
+          }
+        }
+        .animate-gradient-x {
+          animation: gradient-x 3s ease infinite;
+        }
+      `}</style> */}
     </section>
   );
 };

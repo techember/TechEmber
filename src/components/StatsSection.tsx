@@ -12,7 +12,7 @@ const StatsSection = () => {
   const stats = [
     {
       icon: Package,
-      number: 500,
+      number: 100,
       label: 'Orders Completed',
       suffix: '+',
     },
@@ -30,7 +30,7 @@ const StatsSection = () => {
     },
     {
       icon: Star,
-      number: 25,
+      number: 5,
       label: 'Core Team',
       suffix: '',
     },

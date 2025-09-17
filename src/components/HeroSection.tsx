@@ -1,7 +1,13 @@
 import { motion } from 'framer-motion';
 import Hero3D from './Hero3D';
+import { useNavigate } from 'react-router-dom';  
+
 
 const HeroSection = () => {
+    const navigate = useNavigate();
+     const handleViewWork = () => {
+        navigate('/viewWork');  // Change from router.push to navigate
+    };
   return (
     <section className="relative min-h-screen flex items-center justify-center overflow-hidden bg-gradient-to-br from-background via-background to-muted">
       {/* Background Pattern */}
@@ -28,7 +34,7 @@ const HeroSection = () => {
               className="text-5xl md:text-7xl font-bold leading-tight mb-6"
             >
               <span className="text-gradient">Tech</span>
-              <span className="text-primary">ember</span>
+              <span className="text-primary">Ember</span>
               <br />
               <span className="text-foreground">Solutions</span>
             </motion.h1>
@@ -37,7 +43,7 @@ const HeroSection = () => {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.6 }}
-              className="text-xl md:text-2xl text-muted-foreground mb-8 max-w-lg"
+              className="text-xl text-black font-semibold md:text-md text-muted-foreground mb-8 max-w-lg"
             >
               Empowering businesses with cutting-edge technology solutions. 
               From web development to digital marketing, we bring your vision to life.
@@ -52,9 +58,12 @@ const HeroSection = () => {
               <button className="btn-hero">
                 Get Started
               </button>
-              <button className="btn-hero-outline">
-                View Our Work
-              </button>
+           <button 
+        onClick={handleViewWork} 
+        className="btn-hero-outline"
+      >
+        View Our Work
+      </button>
             </motion.div>
           </motion.div>
 
@@ -80,14 +89,45 @@ const HeroSection = () => {
               }}
               className="absolute top-10 right-10 bg-card border border-border rounded-lg p-4 shadow-lg"
             >
-              <div className="text-sm font-semibold text-primary">500+</div>
+              <div className="text-sm font-semibold text-primary">100+</div>
               <div className="text-xs text-muted-foreground">Projects Done</div>
+            </motion.div>
+            <motion.div
+              animate={{ 
+                y: [0, -20, 0],
+                rotate: [0, 5, 0]
+              }}
+              transition={{ 
+                duration: 3,
+                repeat: Infinity,
+                ease: "easeInOut"
+              }}
+              className="absolute top-20 left-10 bg-card border border-border rounded-lg p-4 shadow-lg"
+            >
+              <div className="text-sm font-semibold text-primary">High</div>
+              <div className="text-xs text-muted-foreground">Quality results</div>
             </motion.div>
 
             <motion.div
               animate={{ 
-                y: [0, 15, 0],
-                rotate: [0, -3, 0]
+                y: [0, -34, 7],
+                rotate: [0, 9, 0]
+              }}
+              transition={{ 
+                duration: 4,
+                repeat: Infinity,
+                ease: "easeInOut",
+                delay: 1
+              }}
+              className="absolute bottom-20 right-20 bg-card border border-border rounded-lg p-4 shadow-lg"
+            >
+              <div className="text-sm font-semibold text-primary">100+</div>
+              <div className="text-xs text-muted-foreground">Partners</div>
+            </motion.div>
+            <motion.div
+              animate={{ 
+                y: [0, 25, 0],
+                rotate: [0, -5, 0]
               }}
               transition={{ 
                 duration: 4,

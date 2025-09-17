@@ -2,8 +2,7 @@ import { motion } from 'framer-motion';
 
 const PartnersSection = () => {
   const partners = [
-    'Microsoft', 'Google', 'Amazon', 'Apple', 'Meta', 'Netflix', 'Adobe', 'Spotify',
-    'Tesla', 'IBM', 'Oracle', 'Salesforce', 'Intel', 'NVIDIA', 'Samsung', 'Sony'
+    'IDL Software', 'General Transport', 'TRI-NEX', 'Imogen Cars', 'BillBank', 'PinPay', "AadyaPay", "Shriji Hostel"
   ];
 
   return (

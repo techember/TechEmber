@@ -1,5 +1,5 @@
 import { motion } from 'framer-motion';
-import { Facebook, Twitter, Instagram, Linkedin, Mail, Phone, MapPin } from 'lucide-react';
+import { Facebook, Twitter, Instagram, Linkedin, Mail, Phone, MapPin, Globe } from 'lucide-react';
 
 const Footer = () => {
   const services = [
@@ -8,6 +8,7 @@ const Footer = () => {
     'Digital Marketing',
     'Social Media Marketing',
     'Video Editing',
+    'Graphic Designing',
   ];
 
   const quickLinks = [
@@ -47,7 +48,7 @@ const Footer = () => {
               viewport={{ once: true }}
               className="lg:col-span-1"
             >
-              <h3 className="text-2xl font-bold mb-4">Techember Solutions</h3>
+              <h3 className="text-2xl font-bold mb-4">TechEmber Solutions</h3>
               <p className="text-primary-foreground/80 mb-6 leading-relaxed">
                 Empowering businesses with cutting-edge technology solutions. 
                 We transform ideas into digital reality.
@@ -55,16 +56,20 @@ const Footer = () => {
               
               <div className="space-y-3">
                 <div className="flex items-center">
-                  <MapPin className="w-5 h-5 mr-3 text-primary-foreground/60" />
-                  <span className="text-primary-foreground/80">123 Tech Street, Digital City</span>
+                  <MapPin className="w-10 h-10 mr-3 text-primary-foreground/60" />
+                  <span className="text-primary-foreground/80">1st Floor Pushpraj Annexe, Morar, Gwalior, Madhya Pradesh</span>
                 </div>
                 <div className="flex items-center">
                   <Phone className="w-5 h-5 mr-3 text-primary-foreground/60" />
-                  <span className="text-primary-foreground/80">+1 (555) 123-4567</span>
+                  <span className="text-primary-foreground/80">+919343789798</span>
+                </div>
+                <div className="flex items-center">
+                  <Globe className="w-5 h-5 mr-3 text-primary-foreground/60" />
+                  <span className="text-primary-foreground/80">Info@techember.in</span>
                 </div>
                 <div className="flex items-center">
                   <Mail className="w-5 h-5 mr-3 text-primary-foreground/60" />
-                  <span className="text-primary-foreground/80">info@techember.com</span>
+                  <span className="text-primary-foreground/80">techembersolutions@gmail.com</span>
                 </div>
               </div>
             </motion.div>
@@ -183,7 +188,7 @@ const Footer = () => {
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="flex flex-col md:flex-row justify-between items-center">
               <p className="text-primary-foreground/80 text-sm">
-                © {new Date().getFullYear()} Techember Solutions. All rights reserved.
+                © {new Date().getFullYear()} TechEmber Solutions. All rights reserved.
               </p>
               <div className="flex space-x-6 mt-4 md:mt-0">
                 <a href="/terms" className="text-primary-foreground/80 hover:text-primary-foreground text-sm transition-colors duration-200">

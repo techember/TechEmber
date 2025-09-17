@@ -1,17 +1,19 @@
 import { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { ChevronDown, Menu, X } from 'lucide-react';
-
+import { useNavigate } from "react-router-dom";
 const Navbar = () => {
   const [isServicesOpen, setIsServicesOpen] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const navigate = useNavigate();
 
   const services = [
-    { name: 'Website Development', href: '/services/website-development' },
-    { name: 'App Development', href: '/services/app-development' },
-    { name: 'Digital Marketing', href: '/services/digital-marketing' },
-    { name: 'Social Media Marketing', href: '/services/social-media' },
-    { name: 'Video Editing', href: '/services/video-editing' },
+    { name: 'Website Development', href: '/services#web-development' },
+    { name: 'App Development', href: '/services#app-development' },
+    { name: 'Digital Marketing', href: '/services#digital-marketing' },
+    { name: 'Social Media Marketing', href: '/services#social-media-handling' },
+    { name: 'Video Editing', href: '/services#video-editing' },
+    { name: 'Graphic Designing', href: '/services#graphic-design' },
   ];
 
   return (
@@ -24,9 +26,10 @@ const Navbar = () => {
               initial={{ opacity: 0, x: -20 }}
               animate={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.5 }}
-              className="text-2xl font-bold text-primary"
+              className="text-2xl font-bold text-primary flex items-center"
             >
-              Techember Solutions
+              <span>TechEmber </span>
+              <img src="/techember_logo.png" alt="Techember Logo" className="h-12 ml-0" />
             </motion.div>
           </div>
 
@@ -43,7 +46,7 @@ const Navbar = () => {
                 onMouseEnter={() => setIsServicesOpen(true)}
                 onMouseLeave={() => setIsServicesOpen(false)}
               >
-                <button className="text-foreground hover:text-primary transition-colors duration-200 font-medium flex items-center">
+                <button onClick={() => navigate("/services")} className="text-foreground hover:text-primary transition-colors duration-200 font-medium flex items-center">
                   Services
                   <ChevronDown className={`ml-1 h-4 w-4 transition-transform duration-200 ${isServicesOpen ? 'rotate-180' : ''}`} />
                 </button>
