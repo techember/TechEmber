@@ -67,10 +67,10 @@ const Footer = () => {
                   <Globe className="w-5 h-5 mr-3 text-primary-foreground/60" />
                   <span className="text-primary-foreground/80">Info@techember.in</span>
                 </div>
-                <div className="flex items-center">
+                {/* <div className="flex items-center">
                   <Mail className="w-5 h-5 mr-3 text-primary-foreground/60" />
                   <span className="text-primary-foreground/80">techembersolutions@gmail.com</span>
-                </div>
+                </div> */}
               </div>
             </motion.div>
 
