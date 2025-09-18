@@ -143,17 +143,17 @@ useEffect(() => {
                     {/* Card Content */}
                     <div className="relative bg-black rounded-2xl p-3 h-[300px] overflow-hidden group">
                       {/* Icon */}
-                      <div className={`w-14 h-14 mb-4 bg-white rounded-2xl flex items-center justify-center transition-all duration-300 ${isHovered ? 'scale-110 rotate-3' : ''}`}>
-                        <Icon className="w-8 h-8 text-black" />
+                      <div className={`w-20 h-20 mb-4 bg-white rounded-2xl flex items-center justify-center transition-all duration-300 ${isHovered ? 'scale-110 rotate-3' : ''}`}>
+                        <Icon className="w-18 h-18 text-black" />
                       </div>
 
                       {/* Title */}
-                      <h3 className={`text-2xl font-bold my-2 sm:mb-4 transition-colors duration-300 ${isHovered ? 'text-orange-400' : 'text-white'}`}>
+                      <h3 className={`text-3xl sm:text-2xl font-bold my-2 sm:mb-4 transition-colors duration-300 ${isHovered ? 'text-orange-400' : 'text-white'}`}>
                         {reason.title}
                       </h3>
 
                       {/* Description */}
-                      <p className="text-gray-300 my-2 sm:mb-6 leading-relaxed flex-1">
+                      <p className="hidden sm:block text-sm sm:text-base text-gray-300 my-2 sm:mb-6 leading-relaxed flex-1">
                         {reason.description}
                       </p>
                     </div>

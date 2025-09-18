@@ -46,9 +46,13 @@ const Navbar = () => {
                 onMouseEnter={() => setIsServicesOpen(true)}
                 onMouseLeave={() => setIsServicesOpen(false)}
               >
-                <button onClick={() => navigate("/services")} className="text-foreground hover:text-primary transition-colors duration-200 font-medium flex items-center">
+                <button onClick={() => {
+                  setIsServicesOpen(!isServicesOpen); // toggle dropdown
+                  navigate("/services"); // redirect
+                  }}
+                className="text-foreground hover:text-primary transition-colors duration-200 font-medium flex items-center">
                   Services
-                  <ChevronDown className={`ml-1 h-4 w-4 transition-transform duration-200 ${isServicesOpen ? 'rotate-180' : ''}`} />
+                <ChevronDown className={`ml-1 h-4 w-4 transition-transform duration-200 ${ isServicesOpen ? "rotate-180" : "" }`} />
                 </button>
                 
                 <AnimatePresence>
