@@ -7,7 +7,9 @@ import Layout from "./components/Layout";
 import Index from "./pages/Index";
 import NotFound from "./pages/NotFound";
 import ViewWork from "./pages/viewWork";
-// import Services from "./pages/Services";
+import Services from "./pages/Services";
+import PrivacyPolicy from "./pages/PrivacyPolicy";
+import Terms from "./pages/Terms";
 
 const queryClient = new QueryClient();
 
@@ -20,8 +22,10 @@ const App = () => (
       <Layout>
         <Routes>
           <Route path="/" element={<Index />} />
-          {/* <Route path="/services" element={<Services />} /> */}
+          <Route path="/services" element={<Services />} />
           <Route path="/viewWork" element={<ViewWork />}/>
+          <Route path="/term" element={<Terms />}/>
+          <Route path="/privacy-policy" element={<PrivacyPolicy />}/>
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
           <Route path="*" element={<NotFound />} />
         </Routes>

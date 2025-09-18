@@ -1,12 +1,16 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { Code, Smartphone, TrendingUp, Share2, Video, WandSparkles, ChevronLeft, ChevronRight } from 'lucide-react';
-
+import { useNavigate } from 'react-router-dom'; 
 const ServicesSection = () => {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [isHovering, setIsHovering] = useState(false);
   const [hoveredCard, setHoveredCard] = useState(null);
   const carouselRef = useRef(null);
-
+  const [cardsToShow, setCardsToShow] = useState(3);
+  const navigate = useNavigate();
+  const handleLearnMore = () => {
+        navigate('/services');  // Change from router.push to navigate
+    };
   const services = [
     {
       icon: Code,
@@ -49,7 +53,19 @@ const ServicesSection = () => {
       return () => clearInterval(interval);
     }
   }, [isHovering, services.length]);
+  useEffect(() => {
+  const handleResize = () => {
+    if (window.innerWidth < 640) {  // Tailwind's `sm` breakpoint
+      setCardsToShow(1);
+    } else {
+      setCardsToShow(3);
+    }
+  };
 
+  handleResize(); // set initial value
+  window.addEventListener("resize", handleResize);
+  return () => window.removeEventListener("resize", handleResize);
+}, []);
   const nextSlide = () => {
     setCurrentIndex((prev) => (prev + 1) % services.length);
   };
@@ -60,7 +76,7 @@ const ServicesSection = () => {
 
   const getVisibleCards = () => {
     const visibleCards = [];
-    for (let i = 0; i < 3; i++) {
+    for (let i = 0; i < cardsToShow; i++) {
       const index = (currentIndex + i) % services.length;
       visibleCards.push({ ...services[index], originalIndex: index });
     }
@@ -114,7 +130,7 @@ const ServicesSection = () => {
               return (
                 <div
                   key={`${service.originalIndex}-${currentIndex}`}
-                  className={`w-80 transition-all duration-500 ${index === 1 ? 'scale-105 z-10' : 'scale-95 opacity-80'}`}
+                  className={`w-90 sm:w-80 transition-all duration-500 ${index === 1 ? 'scale-105 z-10' : 'scale-95 opacity-80'}`}
                   onMouseEnter={() => setHoveredCard(service.originalIndex)}
                   onMouseLeave={() => setHoveredCard(null)}
                 >
@@ -130,24 +146,24 @@ const ServicesSection = () => {
                     {/* Card Content */}
                     <div className="relative bg-black rounded-2xl p-3 h-[300px] overflow-hidden group">
                       {/* Icon */}
-                      <div className={`w-14 h-14 mb-4 bg-white rounded-2xl flex items-center justify-center transition-all duration-300 ${isHovered ? 'scale-110 rotate-3' : ''}`}>
-                        <Icon className="w-8 h-8 text-black" />
+                      <div className={`w-20 h-20 sm:w-14 sm:h-14 mb-4 bg-white rounded-2xl flex items-center justify-center transition-all duration-300 ${isHovered ? 'scale-110 rotate-3' : ''}`}>
+                        <Icon className="w-18 h-18 sm:w-8 sm:h-8 text-black" />
                       </div>
 
                       {/* Title */}
-                      <h3 className={`text-2xl font-bold mb-4 transition-colors duration-300 ${isHovered ? 'text-orange-400' : 'text-white'}`}>
+                      <h3 className={`text-4xl sm:text-2xl font-bold mb-4 transition-colors duration-300 ${isHovered ? 'text-orange-400' : 'text-white'}`}>
                         {service.title}
                       </h3>
 
                       {/* Description */}
-                      <p className="text-gray-300 mb-6 leading-relaxed flex-1">
+                      <p className="hidden sm:block text-sm sm:text-base text-gray-300 mb-6 leading-relaxed flex-1">
                         {service.description}
                       </p>
                     </div>
 
                     {/* Learn More Button - Partially inside/outside card */}
-                    <div className="absolute bottom-4 left-8 right-8">
-                      <button className={`w-full py-3 px-3 bg-white text-black rounded-lg font-semibold transition-all duration-300 shadow-lg hover:shadow-xl transform ${isHovered ? 'translate-y-0 bg-gradient-to-r from-orange-500 to-red-500 text-white' : 'translate-y-0'}`}>
+                    <div className="absolute bottom-4 left-4 right-4">
+                      <button onClick={handleLearnMore} className={`w-full py-2 sm:py-3 px-3 bg-white text-black rounded-lg font-semibold transition-all duration-300 shadow-lg hover:shadow-xl transform ${isHovered ? 'translate-y-0 bg-gradient-to-r from-orange-500 to-red-500 text-white' : 'translate-y-0'}`}>
                         Learn More
                       </button>
                     </div>

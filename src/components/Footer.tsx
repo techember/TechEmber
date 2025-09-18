@@ -1,6 +1,7 @@
 import { motion } from 'framer-motion';
 import { Facebook, Twitter, Instagram, Linkedin, Mail, Phone, MapPin, Globe } from 'lucide-react';
-
+import { FaXTwitter } from "react-icons/fa6";
+import { Link } from 'react-router-dom';
 const Footer = () => {
   const services = [
     'Website Development',
@@ -16,18 +17,19 @@ const Footer = () => {
     { name: 'About Us', href: '/about' },
     { name: 'Services', href: '/services' },
     { name: 'Contact', href: '/contact' },
-    { name: 'Privacy Policy', href: '/privacy' },
+    // { name: 'Privacy Policy', href: '/privacy' },
   ];
 
   const socialLinks = [
-    { icon: Facebook, href: '#', label: 'Facebook' },
-    { icon: Twitter, href: '#', label: 'Twitter' },
-    { icon: Instagram, href: '#', label: 'Instagram' },
-    { icon: Linkedin, href: '#', label: 'LinkedIn' },
+    { icon: Facebook, href: 'https://www.facebook.com/share/17FDc1cre9/', label: 'Facebook' },
+    // { icon: Twitter, href: '#', label: 'Twitter' },
+    { icon: FaXTwitter, href: 'https://x.com/TechEmberS63732?t=RNj_UY8tnxFILGnmjK1fhA&s=09', label: 'X' },
+    { icon: Instagram, href: 'https://www.instagram.com/tech_ember?igsh=MTF0OWJqY2g3YjVrZg%3D%3D', label: 'Instagram' },
+    { icon: Linkedin, href: 'https://www.linkedin.com/company/tech-ember-solutions/', label: 'LinkedIn' },
   ];
 
   return (
-    <footer className="bg-primary text-primary-foreground relative overflow-hidden">
+    <footer id="footer" className="bg-primary text-primary-foreground relative overflow-hidden">
       {/* Background Pattern */}
       <div className="absolute inset-0 opacity-5">
         <div className="absolute inset-0" style={{
@@ -65,12 +67,12 @@ const Footer = () => {
                 </div>
                 <div className="flex items-center">
                   <Globe className="w-5 h-5 mr-3 text-primary-foreground/60" />
+                  <span className="text-primary-foreground/80">www.techember.in</span>
+                </div>
+                <div className="flex items-center">
+                  <Mail className="w-5 h-5 mr-3 text-primary-foreground/60" />
                   <span className="text-primary-foreground/80">Info@techember.in</span>
                 </div>
-                {/* <div className="flex items-center">
-                  <Mail className="w-5 h-5 mr-3 text-primary-foreground/60" />
-                  <span className="text-primary-foreground/80">techembersolutions@gmail.com</span>
-                </div> */}
               </div>
             </motion.div>
 
@@ -138,11 +140,11 @@ const Footer = () => {
               viewport={{ once: true }}
             >
               <h4 className="text-lg font-semibold mb-6">Stay Connected</h4>
-              <p className="text-primary-foreground/80 mb-4">
+              {/* <p className="text-primary-foreground/80 mb-4">
                 Subscribe to our newsletter for the latest updates and insights.
-              </p>
+              </p> */}
               
-              <div className="flex mb-6">
+              {/* <div className="flex mb-6">
                 <input
                   type="email"
                   placeholder="Enter your email"
@@ -151,7 +153,7 @@ const Footer = () => {
                 <button className="px-6 py-2 bg-primary-foreground text-primary rounded-r-lg hover:bg-primary-foreground/90 transition-colors duration-200 font-medium">
                   Subscribe
                 </button>
-              </div>
+              </div> */}
 
               <div className="flex space-x-4">
                 {socialLinks.map((social, index) => {
@@ -191,15 +193,16 @@ const Footer = () => {
                 © {new Date().getFullYear()} TechEmber Solutions. All rights reserved.
               </p>
               <div className="flex space-x-6 mt-4 md:mt-0">
-                <a href="/terms" className="text-primary-foreground/80 hover:text-primary-foreground text-sm transition-colors duration-200">
-                  Terms of Service
-                </a>
-                <a href="/privacy" className="text-primary-foreground/80 hover:text-primary-foreground text-sm transition-colors duration-200">
-                  Privacy Policy
-                </a>
-                <a href="/cookies" className="text-primary-foreground/80 hover:text-primary-foreground text-sm transition-colors duration-200">
+              <Link to="/term" className="text-primary-foreground/80 hover:text-primary-foreground text-sm transition-colors duration-200">
+                Terms of Service
+              </Link>
+              <Link to="/privacy-policy" className="text-primary-foreground/80 hover:text-primary-foreground text-sm transition-colors duration-200">   
+                Privacy Policy
+              </Link>
+
+                {/* <a href="/cookies" className="text-primary-foreground/80 hover:text-primary-foreground text-sm transition-colors duration-200">
                   Cookie Policy
-                </a>
+                </a> */}
               </div>
             </div>
           </div>

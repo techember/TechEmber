@@ -26,9 +26,9 @@ const Navbar = () => {
               initial={{ opacity: 0, x: -20 }}
               animate={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.5 }}
-              className="text-2xl font-bold text-primary flex items-center"
+              className="text-3xl font-bold text-primary flex items-center"
             >
-              <span>TechEmber </span>
+              <span className="bg-gradient-to-r from-orange-500 via-red-500 to-orange-500 bg-clip-text text-transparent">TechEmber </span>
               <img src="/techember_logo.png" alt="Techember Logo" className="h-12 ml-0" />
             </motion.div>
           </div>

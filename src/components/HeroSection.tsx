@@ -8,6 +8,9 @@ const HeroSection = () => {
      const handleViewWork = () => {
         navigate('/viewWork');  // Change from router.push to navigate
     };
+     const handleGetStarted = () => {
+        navigate('/services');  // Change from router.push to navigate
+    };
   return (
     <section className="relative min-h-screen flex items-center justify-center overflow-hidden bg-gradient-to-br from-background via-background to-muted">
       {/* Background Pattern */}
@@ -19,7 +22,7 @@ const HeroSection = () => {
       </div>
 
       <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center pt-14">
           {/* Left Content */}
           <motion.div
             initial={{ opacity: 0, x: -50 }}
@@ -55,7 +58,7 @@ const HeroSection = () => {
               transition={{ duration: 0.8, delay: 0.8 }}
               className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start"
             >
-              <button className="btn-hero">
+              <button onClick={handleGetStarted}  className="btn-hero">
                 Get Started
               </button>
            <button 

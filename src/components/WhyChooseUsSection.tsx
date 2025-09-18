@@ -6,6 +6,7 @@ const WhyChooseUsSection = () => {
   const [isHovering, setIsHovering] = useState(false);
   const [hoveredCard, setHoveredCard] = useState(null);
   const carouselRef = useRef(null);
+  const [cardsToShow, setCardsToShow] = useState(3);
 
   const reasons = [
     {
@@ -49,7 +50,19 @@ const WhyChooseUsSection = () => {
       return () => clearInterval(interval);
     }
   }, [isHovering, reasons.length]);
+useEffect(() => {
+  const handleResize = () => {
+    if (window.innerWidth < 640) {  // Tailwind's `sm` breakpoint
+      setCardsToShow(1);
+    } else {
+      setCardsToShow(3);
+    }
+  };
 
+  handleResize(); // set initial value
+  window.addEventListener("resize", handleResize);
+  return () => window.removeEventListener("resize", handleResize);
+}, []);
   const nextSlide = () => {
     setCurrentIndex((prev) => (prev + 1) % reasons.length);
   };
@@ -60,7 +73,7 @@ const WhyChooseUsSection = () => {
 
   const getVisibleCards = () => {
     const visibleCards = [];
-    for (let i = 0; i < 3; i++) {
+    for (let i = 0; i < cardsToShow; i++) {
       const index = (currentIndex + i) % reasons.length;
       visibleCards.push({ ...reasons[index], originalIndex: index });
     }
@@ -73,7 +86,7 @@ const WhyChooseUsSection = () => {
         {/* Section Header */}
         <div className="text-center mb-16">
           <h2 className="text-4xl md:text-5xl font-bold text-black mb-4">
-            Why Choose <span className="text-gray-700">Techember</span>?
+            Why Choose <span className="text-gray-700">TechEmber</span>?
           </h2>
           <p className="text-xl text-gray-600 max-w-3xl mx-auto">
             We combine innovation, expertise, and dedication to deliver exceptional results that exceed expectations
@@ -119,7 +132,7 @@ const WhyChooseUsSection = () => {
                   onMouseLeave={() => setHoveredCard(null)}
                 >
                   {/* Card */}
-                  <div className="relative bg-black rounded-2xl p-4 h-[300px] overflow-hidden group">
+                  <div className="relative bg-black rounded-2xl p-4 h-[250px] overflow-hidden group">
                     {/* Animated Border Gradient */}
                     <div className={`absolute inset-0 rounded-2xl transition-all duration-300 ${isHovered ? 'opacity-100' : 'opacity-0'}`}>
                       <div className="absolute inset-0 rounded-2xl bg-gradient-to-r from-orange-500 via-red-500 to-orange-500 bg-[length:200%_200%] animate-gradient-x p-0.5">
@@ -135,22 +148,22 @@ const WhyChooseUsSection = () => {
                       </div>
 
                       {/* Title */}
-                      <h3 className={`text-2xl font-bold mb-4 transition-colors duration-300 ${isHovered ? 'text-orange-400' : 'text-white'}`}>
+                      <h3 className={`text-2xl font-bold my-2 sm:mb-4 transition-colors duration-300 ${isHovered ? 'text-orange-400' : 'text-white'}`}>
                         {reason.title}
                       </h3>
 
                       {/* Description */}
-                      <p className="text-gray-300 mb-6 leading-relaxed flex-1">
+                      <p className="text-gray-300 my-2 sm:mb-6 leading-relaxed flex-1">
                         {reason.description}
                       </p>
                     </div>
 
                     {/* Learn More Button - Inside card */}
-                    <div className="absolute bottom-4 left-8 right-8">
+                    {/* <div className="absolute bottom-4 left-8 right-8">
                       <button className={`w-full py-3 px-3 bg-white text-black rounded-lg font-semibold transition-all duration-300 shadow-lg hover:shadow-xl transform ${isHovered ? 'translate-y-0 bg-gradient-to-r from-orange-500 to-red-500 text-white' : 'translate-y-0'}`}>
                         Learn More
                       </button>
-                    </div>
+                    </div> */}
                   </div>
                 </div>
               );
@@ -182,7 +195,10 @@ const WhyChooseUsSection = () => {
             <button className="bg-black text-white px-8 py-4 rounded-lg font-semibold hover:bg-gray-800 transition-all duration-300 hover:scale-105 shadow-lg">
               Start Your Project
             </button>
-            <button className="border-2 border-black text-black px-8 py-4 rounded-lg font-semibold hover:bg-black hover:text-white transition-all duration-300 hover:scale-105">
+            <button onClick={() => {
+    const footer = document.getElementById("footer");
+    footer?.scrollIntoView({ behavior: "smooth" });
+  }} className="border-2 border-black text-black px-8 py-4 rounded-lg font-semibold hover:bg-black hover:text-white transition-all duration-300 hover:scale-105">
               Schedule Consultation
             </button>
           </div>

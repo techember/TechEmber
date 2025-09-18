@@ -3,12 +3,12 @@ import { ExternalLink, Github, Calendar, User, Code, Smartphone, Globe, Video, P
 import * as THREE from 'three';
 
 // Import project images
-import ecommerceImage from '../assets/project-ecommerce.jpg';
-import bankingImage from '../assets/project-banking.jpg';
-import brandingImage from '../assets/project-branding.jpg';
-import corporateImage from '../assets/project-corporate.jpeg';
+import accomodationImage from '../assets/project-accomodation.png';
+import rechargeImage from '../assets/project-recharge.jpg';
+import brandingImage from '../assets/project-logo.jpg';
+import deliveryImage from '../assets/project-deliveryapp.jpg';
 import videoImage from '../assets/project-video.jpeg';
-import dashboardImage from '../assets/project-dashboard.jpeg';
+import dashboardImage from '../assets/project-dashboard.png';
 
 const viewWork = () => {
   const [visibleProjects, setVisibleProjects] = useState(new Set());
@@ -20,51 +20,47 @@ const viewWork = () => {
   const projects = [
     {
       id: 1,
-      title: 'E-Commerce Platform',
+      title: 'Accommodation Platform',
       category: 'web',
-      description: 'Modern e-commerce solution with advanced features and seamless user experience.',
-      image: ecommerceImage,
+      description: 'Modern accommodation platform offering seamless booking, secure payments, and an intuitive user experience for students and residents.',
+      image: accomodationImage,
       date: '2025',
-      client: 'RetailCorp',
-      liveUrl: '#',
-      githubUrl: '#',
+      client: 'Shriji Girls Hostel',
+      liveUrl: 'https://www.shrijigirlshostelindore.in/',
       icon: Globe
     },
     {
       id: 2,
-      title: 'Mobile Banking App',
+      title: 'Recharge App',
       category: 'app',
-      description: 'Secure and intuitive mobile banking application with biometric authentication.',
-      image: bankingImage,
+      description: 'Recharge Commission Hub is a one-stop platform for mobile/DTH recharges and bill payments, offering attractive commissions with a seamless user experience.',
+      image: rechargeImage,
       date: '2025',
-      client: 'FinanceBank',
-      liveUrl: '#',
-      githubUrl: '#',
+      client: 'Recharge Commission Hub',
+      liveUrl: 'https://play.google.com/store/apps/details?id=com.rechargecommissionhub',
       icon: Smartphone
     },
     {
       id: 3,
-      title: 'Brand Identity System',
+      title: 'Logo & Brand Identity',
       category: 'design',
-      description: 'Complete brand identity and design system for a tech startup.',
+      description: 'Crafted a complete logo and brand identity system to establish a strong visual presence for a tech startup.',
       image: brandingImage,
       date: '2025',
-      client: 'StartupTech',
+      client: 'FinTech',
       liveUrl: '#',
-      githubUrl: '#',
       icon: Palette
     },
     {
       id: 4,
-      title: 'Corporate Website',
-      category: 'web',
-      description: 'Professional corporate website with advanced animations and CMS integration.',
-      image: corporateImage,
+      title: 'Delivery App',
+      category: 'app',
+      description: 'A multi-service delivery app for food, groceries, medicines, parcels, and more—offering discounts, instant pick-up/drop, and a seamless city-wide ordering experience.',
+      image: deliveryImage,
       date: '2025',
-      client: 'CorporateInc',
-      liveUrl: '#',
-      githubUrl: '#',
-      icon: Globe
+      client: 'Local Delivery Services',
+      liveUrl: 'https://play.google.com/store/apps/details?id=com.droplanet.hadev',
+      icon: Smartphone
     },
     {
       id: 5,
@@ -74,20 +70,18 @@ const viewWork = () => {
       image: videoImage,
       date: '2025',
       client: 'MarketingPro',
-      liveUrl: '#',
-      githubUrl: '#',
+      liveUrl: 'https://www.instagram.com/reel/DF10CB2zrTm/?igsh=a2NicmtncHM0Z2Jl',
       icon: Video
     },
     {
       id: 6,
-      title: 'Digital Marketing Dashboard',
+      title: 'Recharge Admin Panel',
       category: 'web',
-      description: 'Analytics dashboard for digital marketing campaigns with real-time data visualization.',
+      description: 'Dashboard enabling real-time monitoring, analytics, and management of digital transactions with intuitive data visualization.',
       image: dashboardImage,
       date: '2025',
       client: 'DigitalAgency',
-      liveUrl: '#',
-      githubUrl: '#',
+      liveUrl: 'https://recharge-portal-admin-panel.vercel.app',
       icon: TrendingUp
     }
   ];
@@ -354,7 +348,7 @@ const viewWork = () => {
 
                       {/* Action Buttons */}
                       <div className="flex gap-3">
-                        <button className="flex-1 flex items-center justify-center gap-2 py-2 px-4 bg-white text-black rounded-lg font-semibold hover:bg-gray-100 transition-all duration-300">
+                        <button  onClick={() => window.open(project.liveUrl, "_blank")} className="flex-1 flex items-center justify-center gap-2 py-2 px-4 bg-white text-black rounded-lg font-semibold hover:bg-gray-100 transition-all duration-300">
                           <ExternalLink className="w-4 h-4" />
                           Live
                         </button>
