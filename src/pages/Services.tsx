@@ -55,7 +55,7 @@ const Services = () => {
     },
     {
       id: 6,
-      title: 'Social Media Handling',
+      title: 'Social Media Marketing',
       description: 'Expert social media management that builds brand awareness and community engagement. We create compelling content and manage your social presence across all major platforms.',
       image: socialMediaImage,
       features: ['Content Creation', 'Community Management', 'Social Strategy', 'Influencer Outreach'],

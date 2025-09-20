@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { ChevronDown, Menu, X } from 'lucide-react';
 import { useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom"; 
 const Navbar = () => {
   const [isServicesOpen, setIsServicesOpen] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
@@ -28,8 +29,10 @@ const Navbar = () => {
               transition={{ duration: 0.5 }}
               className="text-3xl font-bold text-primary flex items-center"
             >
+              <Link to="/" className="flex items-center">
               <span className="bg-gradient-to-r from-orange-500 via-red-500 to-orange-500 bg-clip-text text-transparent">TechEmber </span>
               <img src="/techember_logo.png" alt="Techember Logo" className="h-12 ml-0" />
+              </Link>
             </motion.div>
           </div>
 
@@ -39,9 +42,15 @@ const Navbar = () => {
               <a href="/" className="text-foreground hover:text-primary transition-colors duration-200 font-medium">
                 Home
               </a>
-              
+               <a
+                href="/services"
+                className="text-foreground hover:text-primary transition-colors duration-200 font-medium"
+              >
+                Services
+              </a>
+
               {/* Services Dropdown */}
-              <div 
+              {/* <div 
                 className="relative"
                 onMouseEnter={() => setIsServicesOpen(true)}
                 onMouseLeave={() => setIsServicesOpen(false)}
@@ -79,7 +88,7 @@ const Navbar = () => {
                     </motion.div>
                   )}
                 </AnimatePresence>
-              </div>
+              </div> */}
 
               <a href="/about" className="text-foreground hover:text-primary transition-colors duration-200 font-medium">
                 About
@@ -117,8 +126,15 @@ const Navbar = () => {
               <a href="/" className="block px-3 py-2 text-card-foreground hover:bg-accent hover:text-accent-foreground rounded-md transition-colors duration-200">
                 Home
               </a>
-              
-              <div className="px-3 py-2">
+                {/* Services simple link */}
+              <a
+                href="/services"
+                className="block px-3 py-2 text-card-foreground hover:bg-accent hover:text-accent-foreground rounded-md transition-colors duration-200"
+              >
+                Services
+              </a>
+
+              {/* <div className="px-3 py-2">
                 <button 
                   onClick={() => setIsServicesOpen(!isServicesOpen)}
                   className="flex items-center w-full text-left text-card-foreground hover:text-accent-foreground transition-colors duration-200"
@@ -148,7 +164,7 @@ const Navbar = () => {
                   )}
                 </AnimatePresence>
               </div>
-              
+               */}
               <a href="/about" className="block px-3 py-2 text-card-foreground hover:bg-accent hover:text-accent-foreground rounded-md transition-colors duration-200">
                 About
               </a>

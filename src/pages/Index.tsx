@@ -4,7 +4,7 @@ import StatsSection from '@/components/StatsSection';
 import PartnersSection from '@/components/PartnersSection';
 import ServicesSection from '@/components/ServicesSection';
 import WhyChooseUsSection from '@/components/WhyChooseUsSection';
-
+import ReviewsSection from '@/components/ReviewsSection';
 
 const Index = () => {
   return (
@@ -15,7 +15,7 @@ const Index = () => {
       <PartnersSection />
       <ServicesSection />
       <WhyChooseUsSection />
-      
+      <ReviewsSection />
     </div>
   );
 };

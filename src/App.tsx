@@ -7,7 +7,9 @@ import Layout from "./components/Layout";
 import Index from "./pages/Index";
 import NotFound from "./pages/NotFound";
 import ViewWork from "./pages/viewWork";
+import About from "./pages/About";
 import Services from "./pages/Services";
+import Contact from "./pages/Contact";
 import PrivacyPolicy from "./pages/PrivacyPolicy";
 import Terms from "./pages/Terms";
 
@@ -23,6 +25,8 @@ const App = () => (
         <Routes>
           <Route path="/" element={<Index />} />
           <Route path="/services" element={<Services />} />
+          <Route path="/about" element={<About />} />
+          <Route path="/contact" element={<Contact />} />
           <Route path="/viewWork" element={<ViewWork />}/>
           <Route path="/term" element={<Terms />}/>
           <Route path="/privacy-policy" element={<PrivacyPolicy />}/>
