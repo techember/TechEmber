@@ -1,10 +1,14 @@
 import { motion } from 'framer-motion';
-
+import { useNavigate } from 'react-router-dom';  
 const PartnersSection = () => {
   const partners = [
     'IDL Software', 'General Transport', 'TRI-NEX', 'Imogen Cars', 'BillBank', 'PinPay', "AadyaPay", "Shriji Hostel"
   ];
-
+    const navigate = useNavigate();
+const handlePartner = () => {
+        navigate('/contact');  // Change from router.push to navigate
+         window.scrollTo({ top: 0, behavior: 'smooth' });
+    };
   return (
     <section className="py-16 bg-background overflow-hidden">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -86,7 +90,7 @@ const PartnersSection = () => {
           <p className="text-muted-foreground mb-6">
             Ready to join our network of successful partners?
           </p>
-          <button className="btn-hero">
+          <button onClick={handlePartner} className="btn-hero">
             Become a Partner
           </button>
         </motion.div>

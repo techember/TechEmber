@@ -1,13 +1,17 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { Shield, Zap, Users, Award, Clock, Target, ChevronLeft, ChevronRight } from 'lucide-react';
-
+import { useNavigate } from 'react-router-dom';  
 const WhyChooseUsSection = () => {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [isHovering, setIsHovering] = useState(false);
   const [hoveredCard, setHoveredCard] = useState(null);
   const carouselRef = useRef(null);
   const [cardsToShow, setCardsToShow] = useState(3);
-
+  const navigate = useNavigate();
+  const handleStartProject = () => {
+        navigate('/contact');  // Change from router.push to navigate
+         window.scrollTo({ top: 0, behavior: 'smooth' });
+    };
   const reasons = [
     {
       icon: Shield,
@@ -192,7 +196,7 @@ useEffect(() => {
             Ready to experience the Techember difference?
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <button className="bg-black text-white px-8 py-4 rounded-lg font-semibold hover:bg-gray-800 transition-all duration-300 hover:scale-105 shadow-lg">
+            <button onClick={handleStartProject} className="bg-black text-white px-8 py-4 rounded-lg font-semibold hover:bg-gray-800 transition-all duration-300 hover:scale-105 shadow-lg">
               Start Your Project
             </button>
             <button onClick={() => {

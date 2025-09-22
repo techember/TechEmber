@@ -124,7 +124,7 @@ const HeroSection = () => {
               }}
               className="absolute bottom-20 right-20 bg-card border border-border rounded-lg p-4 shadow-lg"
             >
-              <div className="text-sm font-semibold text-primary">100+</div>
+              <div className="text-sm font-semibold text-primary">35+</div>
               <div className="text-xs text-muted-foreground">Partners</div>
             </motion.div>
             <motion.div

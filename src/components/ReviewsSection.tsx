@@ -146,7 +146,7 @@ const ReviewsSection: React.FC = () => {
             >
               <div className="bg-gray-900 rounded-2xl p-6 h-full shadow-2xl border border-gray-800 hover:shadow-3xl hover:scale-105 transition-all duration-300 group relative overflow-hidden">
                 {/* Subtle gradient overlay */}
-                <div className="absolute inset-0 bg-gradient-to-br from-gray-800 to-gray-900 opacity-50 group-hover:opacity-70 transition-opacity duration-300"></div>
+                <div className="absolute inset-0 bg-black from-gray-800 to-gray-900 opacity-50 group-hover:opacity-70 transition-opacity duration-300"></div>
                 
                 <div className="relative z-10 flex flex-col h-full">
                   {/* Rating */}

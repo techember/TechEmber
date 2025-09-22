@@ -315,7 +315,7 @@ const Contact = () => {
               </div>
 
               {/* Map Placeholder */}
-              <motion.a
+              {/* <motion.a
   href="https://maps.app.goo.gl/sPfQDgpdZ4NYZwpe8?g_st=aw"
   target="_blank"
   rel="noopener noreferrer"
@@ -330,16 +330,16 @@ const Contact = () => {
     style={{ border: 0 }}
     loading="lazy"
     referrerPolicy="no-referrer-when-downgrade"
-  ></iframe>
+  ></iframe> */}
 
   {/* Hover Overlay */}
-  <div className="absolute inset-0 rounded-xl bg-gradient-to-br from-orange-500/10 to-red-500/10 opacity-0 group-hover:opacity-100 transition duration-300 flex items-center justify-center">
+  {/* <div className="absolute inset-0 rounded-xl bg-gradient-to-br from-orange-500/10 to-red-500/10 opacity-0 group-hover:opacity-100 transition duration-300 flex items-center justify-center">
     <div className="text-center space-y-2">
       <MapPin className="w-12 h-12 mx-auto text-orange-600" />
       <p className="text-lg font-semibold text-black">Our Location</p>
     </div>
   </div>
-</motion.a>
+</motion.a> */}
 
             </motion.div>
           </div>

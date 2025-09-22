@@ -24,7 +24,7 @@ const StatsSection = () => {
     },
     {
       icon: Handshake,
-      number: 100,
+      number: 35,
       label: 'Partners',
       suffix: '+',
     },

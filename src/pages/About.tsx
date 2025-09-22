@@ -2,13 +2,17 @@ import React from 'react';
 import { motion } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
 import { Target, Users, Award, Lightbulb, Handshake, Zap } from 'lucide-react';
-
+import { useNavigate } from 'react-router-dom';
 const About = () => {
   const [heroRef, heroInView] = useInView({ threshold: 0.1 });
   const [missionRef, missionInView] = useInView({ threshold: 0.1 });
   const [valuesRef, valuesInView] = useInView({ threshold: 0.1 });
   const [teamRef, teamInView] = useInView({ threshold: 0.1 });
-
+  const navigate = useNavigate();
+  const handlePartner = () => {
+          navigate('/contact');  // Change from router.push to navigate
+           window.scrollTo({ top: 0, behavior: 'smooth' });
+      };
   const values = [
     {
       icon: <Handshake className="w-8 h-8" />,
@@ -288,7 +292,7 @@ const About = () => {
               whileTap={{ scale: 0.95 }}
               className="relative inline-flex items-center px-8 py-4 text-lg font-semibold text-white bg-black rounded-full hover:shadow-2xl hover:shadow-orange-500/50 transition-all duration-300 group overflow-hidden"
             >
-              <span className="relative z-10">Get Started Today</span>
+              <button onClick={handlePartner} className="relative z-10">Get Started Today</button>
               <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent translate-x-[-100%] group-hover:translate-x-[100%] transition-transform duration-1000" />
             </motion.button>
           </motion.div>

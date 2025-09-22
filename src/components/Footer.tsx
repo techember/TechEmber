@@ -121,12 +121,12 @@ const Footer = () => {
                     transition={{ delay: index * 0.1 + 0.3 }}
                     viewport={{ once: true }}
                   >
-                    <a 
-                      href={link.href}
+                    <Link
+                      to={link.href}
                       className="text-primary-foreground/80 hover:text-primary-foreground transition-colors duration-200 hover:translate-x-1 inline-block"
                     >
                       {link.name}
-                    </a>
+                    </Link>
                   </motion.li>
                 ))}
               </ul>
