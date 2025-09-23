@@ -94,7 +94,7 @@ const Footer = () => {
                     viewport={{ once: true }}
                   >
                     <Link 
-                      href={`/services/${service.toLowerCase().replace(/\s+/g, '-')}`}
+                      to={`/services/${service.toLowerCase().replace(/\s+/g, '-')}`}
                       className="text-primary-foreground/80 hover:text-primary-foreground transition-colors duration-200 hover:translate-x-1 inline-block"
                     >
                       {service}
