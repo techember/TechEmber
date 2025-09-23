@@ -167,22 +167,22 @@ const Services = () => {
   };
 
   return (
-    <div className="min-h-screen bg-background relative">
+    <div className="min-h-screen bg-background relative overflow-x-hidden">
       <ServiceBackground3D />
       
       {/* Hero Section */}
-      <section className="relative z-10 pt-32 pb-20 px-4 sm:px-6 lg:px-8">
+      <section className="relative z-10 pt-32 pb-20 px-4 sm:px-6 lg:px-8 overflow-hidden">
         <div className="max-w-7xl mx-auto text-center">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
           >
-            <span className="inline-block px-4 py-2 text-sm font-medium rounded-full bg-gradient-to-r from-[hsl(var(--orange-primary))] to-[hsl(var(--red-primary))] text-white mb-6">
+            <span className="inline-block px-4 py-2 text-sm font-medium rounded-full bg-gradient-to-r from-orange-500 to-red-600 text-white mb-6">
               Our Services
             </span>
             <h1 className="text-5xl md:text-7xl font-bold text-foreground mb-6">
-              Innovative <span className="bg-gradient-to-r from-[hsl(var(--orange-primary))] to-[hsl(var(--red-primary))] bg-clip-text text-transparent">Solutions</span>
+              Innovative <span className="bg-gradient-to-r from-[hsl(var(--orange-primary))] to-[hsl(var(--red-primary))] bg-clip-text text-black dark:text-white">Solutions</span>
             </h1>
             <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
               Comprehensive technology services designed to transform your business and drive growth in the digital world
@@ -192,7 +192,7 @@ const Services = () => {
       </section>
 
       {/* Services Section */}
-      <section className="relative z-10 py-20 px-4 sm:px-6 lg:px-8">
+      <section className="relative z-10 py-20 px-4 sm:px-6 lg:px-8 overflow-hidden">
         <div className="max-w-7xl mx-auto">
           {services.map((service, index) => (
             <ServiceCard key={service.id} service={service} index={index} />

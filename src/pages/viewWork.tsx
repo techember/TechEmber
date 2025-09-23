@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { ExternalLink, Github, Calendar, User, Code, Smartphone, Globe, Video, Palette, TrendingUp } from 'lucide-react';
 import * as THREE from 'three';
-
+import { useNavigate } from 'react-router-dom';  
 // Import project images
 import accomodationImage from '../assets/project-accomodation.png';
 import rechargeImage from '../assets/project-recharge.jpg';
@@ -16,7 +16,11 @@ const viewWork = () => {
   const [hoveredProject, setHoveredProject] = useState<number | null>(null);
   const threeContainerRef = useRef<HTMLDivElement>(null);
   const sceneRef = useRef<any>(null);
-
+   const navigate = useNavigate();
+    const handleStartProject = () => {
+          navigate('/contact');  // Change from router.push to navigate
+           window.scrollTo({ top: 0, behavior: 'smooth' });
+      };
   const projects = [
     {
       id: 1,
@@ -373,7 +377,7 @@ const viewWork = () => {
             Let's collaborate and bring your vision to life with cutting-edge technology and creative solutions.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <button className="bg-gradient-brand text-white px-8 py-4 rounded-lg font-semibold hover:scale-105 transition-all duration-300 shadow-brand">
+            <button onClick={handleStartProject} className="bg-gradient-brand text-white px-8 py-4 rounded-lg font-semibold hover:scale-105 transition-all duration-300 shadow-brand">
               Start Your Project
             </button>
             

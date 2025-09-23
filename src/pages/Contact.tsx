@@ -2,14 +2,15 @@ import React, { useState } from 'react';
 import { motion } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
 import { Mail, Phone, MapPin, Send, MessageCircle, Clock, User, FileText, CheckCircle } from 'lucide-react';
-
+// import emailjs from '@emailjs/browser'
 const Contact = () => {
   const [heroRef, heroInView] = useInView({ threshold: 0.1 });
   const [formRef, formInView] = useInView({ threshold: 0.1 });
   const [infoRef, infoInView] = useInView({ threshold: 0.1 });
-
+  // const formRef = useRef(null);
   const [formData, setFormData] = useState({
     name: '',
+    phone: '',
     email: '',
     subject: '',
     message: ''
@@ -28,18 +29,36 @@ const Contact = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     setIsSubmitting(true);
+    // try{
+    //   await emailjs.sendForm(
+    //     import.meta.env.VITE_APP_EMAILJS_SERVICE_ID,
+    //     import.meta.env.VITE_APP_EMAILJS_TEMPLATE_ID,
+    //     import.meta.env.VITE_APP_EMAILJS_PUBLIC_ID,
+    //   )
+    //   setFormData({
+    //   ...formData,
+    //   [e.target.name]: e.target.value
+    // });
+    // }catch(error){
+    //   console.error("Error sending email:", error);
+    // }
+    // finally{
+    //   setIsSubmitting(false);
+    // }
+    
 
     // Create mailto link with form data
     const subject = encodeURIComponent(formData.subject || 'Contact Form Submission');
     const body = encodeURIComponent(
       `Name: ${formData.name}\n` +
+      `Phone: ${formData.phone}\n` +
       `Email: ${formData.email}\n` +
       `Subject: ${formData.subject}\n\n` +
       `Message:\n${formData.message}`
     );
     
     // Open email client with pre-filled data
-    const mailtoLink = `mailto:Info@techember.in?subject=${subject}&body=${body}`;
+    const mailtoLink = `mailto:techembersolutions@gmail.com?subject=${subject}&body=${body}`;
     window.location.href = mailtoLink;
 
     // Simulate form submission
@@ -52,6 +71,7 @@ const Contact = () => {
         setIsSubmitted(false);
         setFormData({
           name: '',
+          phone: '',
           email: '',
           subject: '',
           message: ''
@@ -71,7 +91,7 @@ const Contact = () => {
       icon: <Phone className="w-6 h-6" />,
       title: "Call Us",
       content: "+919343789798",
-      description: "Mon-Fri from 8am to 5pm"
+      description: "Mon-Sat from 10am to 8pm"
     },
     {
       icon: <MapPin className="w-6 h-6" />,
@@ -82,13 +102,13 @@ const Contact = () => {
     {
       icon: <Clock className="w-6 h-6" />,
       title: "Business Hours",
-      content: "Mon-Sat: 10AM - 7PM",
+      content: "Mon-Sat: 10AM - 8PM",
       description: "Weekend consultations available"
     }
   ];
 
   return (
-    <div className="min-h-screen bg-white text-black">
+    <div className="min-h-screen bg-white text-black overflow-x-hidden">
       {/* Hero Section */}
       <section ref={heroRef} className="relative min-h-screen flex items-center justify-center overflow-hidden">
         {/* Background Image */}
@@ -184,8 +204,22 @@ const Contact = () => {
                       disabled={isSubmitting}
                     />
                   </div>
-                  
                   <div className="relative group">
+                  <Phone className="absolute left-3 top-1/2 transform -translate-y-1/2 w-5 h-5 text-gray-500 group-focus-within:text-orange-600 transition-colors" />
+                  <input
+                  type="tel"
+                  name="phone"
+                  value={formData.phone}
+                  onChange={handleInputChange}
+                  placeholder="Your Phone Number"
+                  className="w-full pl-12 pr-4 py-4 bg-white border border-gray-300 rounded-lg focus:border-orange-500 focus:ring-2 focus:ring-orange-500/20 outline-none transition-all duration-300"
+                  required
+                  disabled={isSubmitting}
+                  />
+                  </div>
+                  
+                </div>
+                <div className="relative group">
                     <Mail className="absolute left-3 top-1/2 transform -translate-y-1/2 w-5 h-5 text-gray-500 group-focus-within:text-orange-600 transition-colors" />
                     <input
                       type="email"
@@ -198,8 +232,6 @@ const Contact = () => {
                       disabled={isSubmitting}
                     />
                   </div>
-                </div>
-
                 <div className="relative group">
                   <FileText className="absolute left-3 top-1/2 transform -translate-y-1/2 w-5 h-5 text-gray-500 group-focus-within:text-orange-600 transition-colors" />
                   <input
