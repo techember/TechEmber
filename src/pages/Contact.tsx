@@ -1,13 +1,13 @@
-import React, { useState } from 'react';
+import React, { useState, useRef } from 'react';
 import { motion } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
 import { Mail, Phone, MapPin, Send, MessageCircle, Clock, User, FileText, CheckCircle } from 'lucide-react';
-// import emailjs from '@emailjs/browser'
+import emailjs from '@emailjs/browser'
 const Contact = () => {
   const [heroRef, heroInView] = useInView({ threshold: 0.1 });
-  const [formRef, formInView] = useInView({ threshold: 0.1 });
+  const [formInViewRef, formInView] = useInView({ threshold: 0.1 });
   const [infoRef, infoInView] = useInView({ threshold: 0.1 });
-  // const formRef = useRef(null);
+  const formRef = useRef(null);
   const [formData, setFormData] = useState({
     name: '',
     phone: '',
@@ -29,22 +29,23 @@ const Contact = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     setIsSubmitting(true);
-    // try{
-    //   await emailjs.sendForm(
-    //     import.meta.env.VITE_APP_EMAILJS_SERVICE_ID,
-    //     import.meta.env.VITE_APP_EMAILJS_TEMPLATE_ID,
-    //     import.meta.env.VITE_APP_EMAILJS_PUBLIC_ID,
-    //   )
-    //   setFormData({
-    //   ...formData,
-    //   [e.target.name]: e.target.value
-    // });
-    // }catch(error){
-    //   console.error("Error sending email:", error);
-    // }
-    // finally{
-    //   setIsSubmitting(false);
-    // }
+    try{
+      await emailjs.sendForm(
+        import.meta.env.VITE_APP_EMAILJS_SERVICE_ID,
+        import.meta.env.VITE_APP_EMAILJS_TEMPLATE_ID,
+        formRef.current,
+        import.meta.env.VITE_APP_EMAILJS_PUBLIC_ID,
+      )
+      setFormData({
+      ...formData,
+      [e.target.name]: e.target.value
+    });
+    }catch(error){
+      console.error("Error sending email:", error);
+    }
+    finally{
+      setIsSubmitting(false);
+    }
     
 
     // Create mailto link with form data
@@ -171,7 +172,7 @@ const Contact = () => {
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-16">
             {/* Contact Form */}
             <motion.div
-              ref={formRef}
+              ref={formInViewRef}
               initial={{ opacity: 0, x: -50 }}
               animate={formInView ? { opacity: 1, x: 0 } : {}}
               transition={{ duration: 0.8 }}
@@ -189,7 +190,7 @@ const Contact = () => {
                 </p>
               </div>
 
-              <form onSubmit={handleSubmit} className="space-y-6">
+              <form ref={formRef} onSubmit={handleSubmit} className="space-y-6">
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                   <div className="relative group">
                     <User className="absolute left-3 top-1/2 transform -translate-y-1/2 w-5 h-5 text-gray-500 group-focus-within:text-orange-600 transition-colors" />

@@ -93,12 +93,12 @@ const Footer = () => {
                     transition={{ delay: index * 0.1 + 0.2 }}
                     viewport={{ once: true }}
                   >
-                    <a 
+                    <Link 
                       href={`/services/${service.toLowerCase().replace(/\s+/g, '-')}`}
                       className="text-primary-foreground/80 hover:text-primary-foreground transition-colors duration-200 hover:translate-x-1 inline-block"
                     >
                       {service}
-                    </a>
+                    </Link>
                   </motion.li>
                 ))}
               </ul>
