@@ -85,23 +85,24 @@ const Footer = () => {
             >
               <h4 className="text-lg font-semibold mb-6">Our Services</h4>
               <ul className="space-y-3">
-                {services.map((service, index) => (
-                  <motion.li
-                    key={index}
-                    initial={{ opacity: 0, x: -20 }}
-                    whileInView={{ opacity: 1, x: 0 }}
-                    transition={{ delay: index * 0.1 + 0.2 }}
-                    viewport={{ once: true }}
-                  >
-                    <Link 
-                    to="/services"
-                    className="text-primary-foreground/80 hover:text-primary-foreground transition-colors duration-200 hover:translate-x-1 inline-block"
-                    >
-                    {service}
-                    </Link>
-                  </motion.li>
-                ))}
-              </ul>
+  {services.map((service, index) => (
+    <motion.li
+      key={index}
+      initial={{ opacity: 0, x: -20 }}
+      whileInView={{ opacity: 1, x: 0 }}
+      transition={{ delay: index * 0.1 + 0.2 }}
+      viewport={{ once: true }}
+    >
+      <Link 
+        to="/services"
+        className="text-primary-foreground/80 hover:text-primary-foreground transition-colors duration-200 hover:translate-x-1 inline-block"
+      >
+        {service}
+      </Link>
+    </motion.li>
+  ))}
+</ul>
+
             </motion.div>
 
             {/* Quick Links */}
