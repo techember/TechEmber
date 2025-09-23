@@ -94,10 +94,10 @@ const Footer = () => {
                     viewport={{ once: true }}
                   >
                     <Link 
-                      to={`/services/${service.toLowerCase().replace(/\s+/g, '-')}`}
-                      className="text-primary-foreground/80 hover:text-primary-foreground transition-colors duration-200 hover:translate-x-1 inline-block"
+                    to="/services"
+                    className="text-primary-foreground/80 hover:text-primary-foreground transition-colors duration-200 hover:translate-x-1 inline-block"
                     >
-                      {service}
+                    {service}
                     </Link>
                   </motion.li>
                 ))}
