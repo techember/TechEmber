@@ -2,6 +2,7 @@ import { motion } from 'framer-motion';
 import { Facebook, Twitter, Instagram, Linkedin, Mail, Phone, MapPin, Globe } from 'lucide-react';
 import { FaXTwitter } from "react-icons/fa6";
 import { Link } from 'react-router-dom';
+
 const Footer = () => {
   const services = [
     'Website Development',
