@@ -91,7 +91,7 @@ const Contact = () => {
     {
       icon: <Phone className="w-6 h-6" />,
       title: "Call Us",
-      content: "+919343789798",
+      content: ["+919752079798", ", ", "+919343789798"],
       description: "Mon-Sat from 10am to 8pm"
     },
     {
@@ -348,31 +348,31 @@ const Contact = () => {
               </div>
 
               {/* Map Placeholder */}
-              {/* <motion.a
-  href="https://maps.app.goo.gl/sPfQDgpdZ4NYZwpe8?g_st=aw"
-  target="_blank"
-  rel="noopener noreferrer"
-  initial={{ opacity: 0, scale: 0.9 }}
-  animate={infoInView ? { opacity: 1, scale: 1 } : {}}
-  transition={{ duration: 0.8, delay: 0.5 }}
-  className="relative block h-64 bg-white border border-gray-200 rounded-xl overflow-hidden group"
->
-  <iframe
-    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3579.310245095071!2d78.22700747441456!3d26.219107089555465!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x25af3454b147dd97%3A0xce9cdd66385314fa!2sTech%20Ember%20Solutions!5e0!3m2!1sen!2sin!4v1758372026591!5m2!1sen!2sin"
-    className="absolute inset-0 w-full h-full rounded-xl pointer-events-none"
-    style={{ border: 0 }}
-    loading="lazy"
-    referrerPolicy="no-referrer-when-downgrade"
-  ></iframe> */}
+               <motion.a
+                href="https://maps.app.goo.gl/sPfQDgpdZ4NYZwpe8?g_st=aw"
+                target="_blank"
+                 rel="noopener noreferrer"
+                initial={{ opacity: 0, scale: 0.9 }}
+                animate={infoInView ? { opacity: 1, scale: 1 } : {}}
+               transition={{ duration: 0.8, delay: 0.5 }}
+                className="relative block h-64 bg-white border border-gray-200 rounded-xl overflow-hidden group"
+                >
+               <iframe
+               src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3579.310245095071!2d78.22700747441456!3d26.219107089555465!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x25af3454b147dd97%3A0xce9cdd66385314fa!2sTech%20Ember%20Solutions!5e0!3m2!1sen!2sin!4v1758372026591!5m2!1sen!2sin"
+                className="absolute inset-0 w-full h-full rounded-xl pointer-events-none"
+                style={{ border: 0 }}
+                loading="lazy"
+                referrerPolicy="no-referrer-when-downgrade"
+                ></iframe> 
 
-  {/* Hover Overlay */}
-  {/* <div className="absolute inset-0 rounded-xl bg-gradient-to-br from-orange-500/10 to-red-500/10 opacity-0 group-hover:opacity-100 transition duration-300 flex items-center justify-center">
-    <div className="text-center space-y-2">
-      <MapPin className="w-12 h-12 mx-auto text-orange-600" />
-      <p className="text-lg font-semibold text-black">Our Location</p>
-    </div>
-  </div>
-</motion.a> */}
+                {/* Hover Overlay */}
+                 <div className="absolute inset-0 rounded-xl bg-gradient-to-br from-orange-500/10 to-red-500/10 opacity-0 group-hover:opacity-100 transition duration-300 flex items-center justify-center">
+                 <div className="text-center space-y-2">
+                 <MapPin className="w-12 h-12 mx-auto text-orange-600" />
+                 <p className="text-lg font-semibold text-black">Our Location</p>
+                </div>
+                </div>
+              </motion.a>
 
             </motion.div>
           </div>
